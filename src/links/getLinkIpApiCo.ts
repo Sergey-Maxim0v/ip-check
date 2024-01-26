@@ -1,2 +1,2 @@
 export const getLinkIpApiCo = (ip?: string): string =>
-  `https://ipapi.co/${ip}/json/`;
+  ip ? `https://ipapi.co/${ip}/json/` : "https://ipapi.co/json";
