@@ -1,11 +1,15 @@
+import { SOURCE_ENUM } from "./sourceEnum.ts";
+
 export interface IInfo {
   [key: string]: IInfoElement;
 }
 
 export interface IInfoElement {
   value?: string;
-  source?: string;
+  source?: SOURCE_ENUM;
   description: string;
+  [SOURCE_ENUM.ipapico]?: string;
+  [SOURCE_ENUM.ipapicom]?: string;
 }
 
 export const DEFAULT_INFO: IInfo = {

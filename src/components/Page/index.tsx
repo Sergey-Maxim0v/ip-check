@@ -7,6 +7,8 @@ const Page = () => {
   const [ip, setIp] = useState<string>();
   const { info } = useIpInfo(ip);
 
+  console.log(info);
+
   return (
     <div className={styles.page}>
       <div className={styles.content}>
