@@ -1,4 +1,4 @@
-// /// <reference constants="vite/client" />
+/// <reference types="vite/client" />
 
 declare module "*.scss" {
   const classNames: Record<string, string>;
