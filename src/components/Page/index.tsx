@@ -5,9 +5,10 @@ import styles from "./styles.module.scss";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
-  const { info } = useIpInfo(ip);
+  const { info, isLoading, isError } = useIpInfo(ip);
 
-  console.log(info);
+  // TODO:
+  console.log(isLoading, isError, info, !!setIp);
 
   return (
     <div className={styles.page}>
