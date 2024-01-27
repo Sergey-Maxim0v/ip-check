@@ -6,10 +6,10 @@ import Form from "../Form";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
-  const { info, isLoading, isError } = useIpInfo(ip);
+  const { info, isLoading } = useIpInfo(ip);
 
   // TODO:
-  console.log(isError, info);
+  console.log(info);
 
   return (
     <div className={styles.page}>
@@ -21,7 +21,6 @@ const Page = () => {
         <div className={styles.loaders}>
           TODO: loaders
           <p>is loading: {`${isLoading}`}</p>
-          <p>is error: {`${isError}`}</p>
         </div>
 
         <div className={styles.info}>
