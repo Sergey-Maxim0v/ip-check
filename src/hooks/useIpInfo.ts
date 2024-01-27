@@ -16,6 +16,9 @@ export const useIpInfo = (ip?: string) => {
   useEffect(() => {
     setInfo(() => DEFAULT_INFO);
 
+    setIsLoadingIpApiCom(true);
+    setIsLoadingIpApiCo(true);
+
     getIpApiCom(ip)
       .then((data) => {
         if (data?.status === "success") {

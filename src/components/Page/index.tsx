@@ -18,7 +18,11 @@ const Page = () => {
           <Form ip={ip} setIp={setIp} disabled={isLoading} />
         </div>
 
-        <div className={styles.loaders}>TODO: loaders</div>
+        <div className={styles.loaders}>
+          TODO: loaders
+          <p>is loading: {`${isLoading}`}</p>
+          <p>is error: {`${isError}`}</p>
+        </div>
 
         <div className={styles.info}>
           TODO: <br /> <br />
