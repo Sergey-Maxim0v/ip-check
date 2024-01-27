@@ -2,50 +2,26 @@ import { useIpInfo } from "../../hooks/useIpInfo.ts";
 import { useState } from "react";
 
 import styles from "./styles.module.scss";
+import Form from "../Form";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
   const { info, isLoading, isError } = useIpInfo(ip);
 
   // TODO:
-  console.log(isLoading, isError, info, !!setIp);
+  console.log(isError, info);
 
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        <div>
-          {/* TODO */}
-          input, buttons
+        <div className={styles.form}>
+          <Form ip={ip} setIp={setIp} disabled={isLoading} />
         </div>
 
-        <div
-          style={{
-            marginTop: "1rem",
-            marginBottom: "1rem",
-            width: "100%",
-            height: "1px",
-            backgroundColor: "currentColor",
-          }}
-        ></div>
+        <div className={styles.loaders}>TODO: loaders</div>
 
-        <div>
-          {/* TODO */}
-          loaders
-        </div>
-
-        <div
-          style={{
-            marginTop: "1rem",
-            marginBottom: "1rem",
-            width: "100%",
-            height: "1px",
-            backgroundColor: "currentColor",
-          }}
-        ></div>
-
-        <div>
-          {/* TODO */}
-
+        <div className={styles.info}>
+          TODO: <br /> <br />
           {Object.entries(info).map((el) => (
             <p key={el[0]} style={{ marginBottom: "0.5rem" }}>
               {`${el[0]}: ${el[1].value} (${el[1].source})`}
@@ -55,8 +31,10 @@ const Page = () => {
       </div>
 
       <div className={styles.map}>
-        {/* TODO */}
-        map
+        <br />
+        TODO: map
+        <br />
+        <br />
       </div>
     </div>
   );

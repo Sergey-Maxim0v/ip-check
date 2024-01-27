@@ -12,8 +12,8 @@
   }
 
   & > div {
-    width: calc(50% - max(2rem, 4vw));
-    margin: 0 max(1rem, 2vw);
+    width: calc(50% - 1rem);
+    margin: 0 0.5rem;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -23,7 +23,26 @@
 }
 
 .content {
+  & > div {
+    margin-bottom: 1rem;
+  }
+}
+
+.form {
+  border: 1px solid currentColor;
+  padding: 1rem;
+}
+
+.loaders {
+  border: 1px solid currentColor;
+  padding: 1rem;
+}
+
+.info {
+  border: 1px solid currentColor;
+  padding: 1rem;
 }
 
 .map {
+  border: 1px solid currentColor;
 }
