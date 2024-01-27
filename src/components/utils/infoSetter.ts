@@ -1,6 +1,8 @@
 import { IInfo, IInfoElement } from "../../constants/defaultInfo.ts";
 import { Dispatch, SetStateAction } from "react";
 import { SOURCE_ENUM } from "../../constants/sourceEnum.ts";
+import { KEY_MAP_IPAPI_CO } from "../../constants/keyMapIpApiCo.ts";
+import { KEY_MAP_IP_API_COM } from "../../constants/keyMapIpApiCom.ts";
 
 export const infoSetter = ({
   data,
@@ -11,19 +13,34 @@ export const infoSetter = ({
   setInfo: Dispatch<SetStateAction<IInfo>>;
   source: SOURCE_ENUM;
 }): void => {
+  const getKeyMap = () => {
+    switch (source) {
+      case SOURCE_ENUM.ipapico:
+        return KEY_MAP_IPAPI_CO;
+      case SOURCE_ENUM.ipapicom:
+        return KEY_MAP_IP_API_COM;
+    }
+  };
+
   setInfo((prev) => {
     const setterElement = (key: string): IInfoElement => {
+      const dataMap = getKeyMap();
+      const dataKey = dataMap[key];
+
       if (prev[key].value !== undefined) {
-        return { ...prev[key], [source]: data[key] };
+        return { ...prev[key], [source]: data[dataKey] };
       }
 
-      // TODO: key
+      if (data[dataKey] === undefined) {
+        return { ...prev[key] };
+      }
+
       return {
         ...prev[key],
-        value: data[key],
+        value: data[dataKey],
         source: source,
         description: prev[key].description,
-        [source]: data[key],
+        [source]: data[dataKey],
       };
     };
 

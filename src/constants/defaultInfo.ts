@@ -18,82 +18,15 @@ export const DEFAULT_INFO: IInfo = {
     source: undefined,
     description: "public (external) IP address (same as URL ip)",
   },
-  city: {
+  network: {
     value: undefined,
     source: undefined,
-    description: "city name",
+    description: "network",
   },
-  region: {
+  version: {
     value: undefined,
     source: undefined,
-    description: "region name (administrative division)",
-  },
-  region_code: {
-    value: undefined,
-    source: undefined,
-    description: "country code (2 letter, ISO 3166-1 alpha-2)",
-  },
-  country: {
-    value: undefined,
-    source: undefined,
-    description: "country code (2 letter, ISO 3166-1 alpha-2)",
-  },
-  country_code: {
-    value: undefined,
-    source: undefined,
-    description: "country code (2 letter, ISO 3166-1 alpha-2)",
-  },
-  country_code_iso3: {
-    value: undefined,
-    source: undefined,
-    description: "country code (3 letter, ISO 3166-1 alpha-3)",
-  },
-  country_name: {
-    value: undefined,
-    source: undefined,
-    description: "short country name",
-  },
-  country_capital: {
-    value: undefined,
-    source: undefined,
-    description: "capital of the country",
-  },
-  country_tld: {
-    value: undefined,
-    source: undefined,
-    description: "country specific TLD (top-level domain)",
-  },
-  country_area: {
-    value: undefined,
-    source: undefined,
-    description: "area of the country (in sq km)",
-  },
-  country_population: {
-    value: undefined,
-    source: undefined,
-    description: "population of the country",
-  },
-  continent_code: {
-    value: undefined,
-    source: undefined,
-    description: "Two-letter continent code",
-  },
-  in_eu: {
-    value: undefined,
-    source: undefined,
-    description:
-      "whether IP address belongs to a country that is a member " +
-      "of the European Union (EU)",
-  },
-  postal: {
-    value: undefined,
-    source: undefined,
-    description: "postal code / zip code",
-  },
-  district: {
-    value: undefined,
-    source: undefined,
-    description: "District (subdivision of city)",
+    description: "IP version",
   },
   latitude: {
     value: undefined,
@@ -105,10 +38,92 @@ export const DEFAULT_INFO: IInfo = {
     source: undefined,
     description: "longitude",
   },
-  latlong: {
+  city: {
     value: undefined,
     source: undefined,
-    description: "comma separated latitude and longitude",
+    description: "city name",
+  },
+  district: {
+    value: undefined,
+    source: undefined,
+    description: "District (subdivision of city)",
+  },
+  region: {
+    value: undefined,
+    source: undefined,
+    description: "region name (administrative division)",
+  },
+  region_code: {
+    value: undefined,
+    source: undefined,
+    description: "country code (2 letter, ISO 3166-1 alpha-2)",
+  },
+  country_name: {
+    value: undefined,
+    source: undefined,
+    description: "short country name",
+  },
+  country_code: {
+    value: undefined,
+    source: undefined,
+    description: "country code (2 letter, ISO 3166-1 alpha-2)",
+  },
+  country_code_iso3: {
+    value: undefined,
+    source: undefined,
+    description: "country code (3 letter, ISO 3166-1 alpha-3)",
+  },
+  country_capital: {
+    value: undefined,
+    source: undefined,
+    description: "capital of the country",
+  },
+  country_tld: {
+    value: undefined,
+    source: undefined,
+    description: "country specific TLD (top-level domain)",
+  },
+  country_calling_code: {
+    value: undefined,
+    source: undefined,
+    description: "country calling code (dial in code, comma separated)",
+  },
+  country_area: {
+    value: undefined,
+    source: undefined,
+    description: "area of the country (in sq km)",
+  },
+  country_population: {
+    value: undefined,
+    source: undefined,
+    description: "population of the country",
+  },
+  currency: {
+    value: undefined,
+    source: undefined,
+    description: "currency code (ISO 4217)",
+  },
+  currency_name: {
+    value: undefined,
+    source: undefined,
+    description: "currency name",
+  },
+  in_eu: {
+    value: undefined,
+    source: undefined,
+    description:
+      "whether IP address belongs to a country that is a member " +
+      "of the European Union (EU)",
+  },
+  continent_name: {
+    value: undefined,
+    source: undefined,
+    description: "Continent name",
+  },
+  continent_code: {
+    value: undefined,
+    source: undefined,
+    description: "Two-letter continent code",
   },
   timezone: {
     value: undefined,
@@ -127,20 +142,10 @@ export const DEFAULT_INFO: IInfo = {
       "UTC offset (with daylight saving time) as +HHMM or -HHMM " +
       "(HH is hours, MM is minutes)",
   },
-  country_calling_code: {
+  postal: {
     value: undefined,
     source: undefined,
-    description: "country calling code (dial in code, comma separated)",
-  },
-  currency: {
-    value: undefined,
-    source: undefined,
-    description: "currency code (ISO 4217)",
-  },
-  currency_name: {
-    value: undefined,
-    source: undefined,
-    description: "currency name",
+    description: "postal code / zip code",
   },
   languages: {
     value: undefined,
@@ -148,6 +153,11 @@ export const DEFAULT_INFO: IInfo = {
     description:
       "languages spoken (comma separated 2 or 3 letter ISO 639 code " +
       "with optional hyphen separated country suffix)",
+  },
+  org: {
+    value: undefined,
+    source: undefined,
+    description: "organization name",
   },
   isp: {
     value: undefined,
@@ -176,11 +186,6 @@ export const DEFAULT_INFO: IInfo = {
     value: undefined,
     source: undefined,
     description: "autonomous system number",
-  },
-  org: {
-    value: undefined,
-    source: undefined,
-    description: "organization name",
   },
   hostname: {
     value: undefined,
