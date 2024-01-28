@@ -9,10 +9,18 @@ export interface IInfoMap {
 }
 
 const InfoMap = ({ coordinates, ip }: IInfoMap) => {
-  const mapState = { center: coordinates, zoom: 12 };
+  const mapState = {
+    center: coordinates,
+    zoom: 12,
+    controls: ["zoomControl", "fullscreenControl"],
+  };
 
   return (
-    <Map state={mapState} className={styles.map}>
+    <Map
+      state={mapState}
+      className={styles.map}
+      modules={["control.ZoomControl", "control.FullscreenControl"]}
+    >
       {ip && (
         <Placemark
           modules={["geoObject.addon.balloon"]}
