@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import Form from "../Form";
 import InfoElement from "../InfoElement";
+import Map from "../Map";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
@@ -24,10 +25,7 @@ const Page = () => {
       </div>
 
       <div className={styles.map}>
-        <br />
-        TODO: map
-        <br />
-        <br />
+        <Map info={info} />
       </div>
     </div>
   );

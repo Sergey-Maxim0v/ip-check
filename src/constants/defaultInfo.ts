@@ -129,7 +129,7 @@ export const DEFAULT_INFO: IInfo = {
     description: "currency name",
   },
   in_eu: {
-    name: "Страна член ЕС",
+    name: "Страна ЕС",
     value: undefined,
     source: undefined,
     description:
