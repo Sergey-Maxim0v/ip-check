@@ -1,10 +1,12 @@
 import { useIpInfo } from "../../hooks/useIpInfo.ts";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, lazy, Suspense } from "react";
 
 import styles from "./styles.module.scss";
 import Form from "../Form";
 import InfoElement from "../InfoElement";
-import InfoMap from "../Map";
+import Loader from "../Loader";
+
+const InfoMap = lazy(() => import("../InfoMap"));
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
@@ -42,7 +44,9 @@ const Page = () => {
       </div>
 
       <div className={styles.map}>
-        <InfoMap coordinates={coordinates} ip={info.ip.value} />
+        <Suspense fallback={<Loader />}>
+          <InfoMap coordinates={coordinates} ip={info.ip.value} />
+        </Suspense>
       </div>
     </div>
   );

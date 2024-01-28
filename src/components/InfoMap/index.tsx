@@ -1,7 +1,13 @@
 import { memo } from "react";
 
 import styles from "./styles.module.scss";
-import { Map, Placemark } from "@pbe/react-yandex-maps";
+import {
+  Map,
+  Placemark,
+  TypeSelector,
+  FullscreenControl,
+  ZoomControl,
+} from "@pbe/react-yandex-maps";
 
 export interface IInfoMap {
   coordinates: [number, number];
@@ -12,15 +18,10 @@ const InfoMap = ({ coordinates, ip }: IInfoMap) => {
   const mapState = {
     center: coordinates,
     zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
   };
 
   return (
-    <Map
-      state={mapState}
-      className={styles.map}
-      modules={["control.ZoomControl", "control.FullscreenControl"]}
-    >
+    <Map state={mapState} className={styles.map}>
       {ip && (
         <Placemark
           modules={["geoObject.addon.balloon"]}
@@ -30,6 +31,9 @@ const InfoMap = ({ coordinates, ip }: IInfoMap) => {
           }}
         />
       )}
+      <ZoomControl />
+      <FullscreenControl />
+      <TypeSelector />
     </Map>
   );
 };
