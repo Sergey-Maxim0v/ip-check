@@ -10,7 +10,6 @@ export const useIpInfo = (ip?: string) => {
   const [isLoadingIpApiCo, setIsLoadingIpApiCo] = useState(false);
   const [isLoadingIpApiCom, setIsLoadingIpApiCom] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isReady, setIsReady] = useState(false);
 
   const isLoading = isLoadingIpApiCo && isLoadingIpApiCom;
 
@@ -29,10 +28,6 @@ export const useIpInfo = (ip?: string) => {
       .catch(() => setIsError(true))
       .finally(() => {
         setIsLoadingIpApiCom(false);
-
-        if (!isLoadingIpApiCo) {
-          setIsReady(true);
-        }
       });
 
     getIpApiCo(ip)
@@ -44,11 +39,8 @@ export const useIpInfo = (ip?: string) => {
       .catch(() => setIsError(true))
       .finally(() => {
         setIsLoadingIpApiCo(false);
-        if (!isLoadingIpApiCom) {
-          setIsReady(true);
-        }
       });
   }, [ip]);
 
-  return { info, isLoading, isError, isReady };
+  return { info, isLoading, isError };
 };
