@@ -1,10 +1,10 @@
 import { useIpInfo } from "../../hooks/useIpInfo.ts";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "./styles.module.scss";
 import Form from "../Form";
 import InfoElement from "../InfoElement";
-import Map from "../Map";
+import InfoMap from "../Map";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
@@ -15,6 +15,17 @@ const Page = () => {
       console.log(info);
     }
   }, [info]);
+
+  const coordinates: [number, number] = useMemo(() => {
+    const latitude = Number.isNaN(Number(info.latitude.value))
+      ? 0
+      : Number(info.latitude.value);
+    const longitude = Number.isNaN(Number(info.longitude.value))
+      ? 0
+      : Number(info.longitude.value);
+
+    return [latitude, longitude];
+  }, [info.ip?.value, info.ip?.value]);
 
   return (
     <div className={styles.page}>
@@ -31,7 +42,7 @@ const Page = () => {
       </div>
 
       <div className={styles.map}>
-        <Map info={info} />
+        <InfoMap coordinates={coordinates} ip={info.ip.value} />
       </div>
     </div>
   );

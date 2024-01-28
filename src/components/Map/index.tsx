@@ -1,15 +1,29 @@
-import { IInfo } from "../../constants/defaultInfo.ts";
+import { memo } from "react";
 
 import styles from "./styles.module.scss";
+import { Map, Placemark } from "@pbe/react-yandex-maps";
 
-const Map = ({ info }: { info: IInfo }) => {
-  const coordinates =
-    info.latitude.value && info.longitude.value
-      ? `${info.latitude.value},${info.longitude.value}`
-      : undefined;
+export interface IInfoMap {
+  coordinates: [number, number];
+  ip?: string | boolean;
+}
 
-  console.log(coordinates);
-  return <div className={styles.map}>TODO: Map</div>;
+const InfoMap = ({ coordinates, ip }: IInfoMap) => {
+  const mapState = { center: coordinates, zoom: 12 };
+
+  return (
+    <Map state={mapState} className={styles.map}>
+      {ip && (
+        <Placemark
+          modules={["geoObject.addon.balloon"]}
+          geometry={coordinates}
+          properties={{
+            balloonContentBody: ip,
+          }}
+        />
+      )}
+    </Map>
+  );
 };
 
-export default Map;
+export default memo(InfoMap);

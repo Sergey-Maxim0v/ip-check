@@ -1,7 +1,12 @@
-import { FC, FormEvent, useState } from "react";
-import { IForm } from "./types.ts";
+import { Dispatch, FC, FormEvent, SetStateAction, useState } from "react";
 
 import styles from "./styles.module.scss";
+
+export interface IForm {
+  setIp: Dispatch<SetStateAction<string | undefined>>;
+  isLoading: boolean;
+  ip?: string;
+}
 
 const Form: FC<IForm> = ({ ip, setIp, isLoading }) => {
   const [value, setValue] = useState(ip ?? "");
