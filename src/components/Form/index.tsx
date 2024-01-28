@@ -5,7 +5,6 @@ import styles from "./styles.module.scss";
 
 const Form: FC<IForm> = ({ ip, setIp, isLoading, isReady }) => {
   const [value, setValue] = useState(ip ?? "");
-  const placeholder = ip ?? "108.177.127.104";
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,7 +18,7 @@ const Form: FC<IForm> = ({ ip, setIp, isLoading, isReady }) => {
         disabled={!isReady}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder={placeholder}
+        placeholder="108.177.127.104"
       />
 
       <button
@@ -27,7 +26,7 @@ const Form: FC<IForm> = ({ ip, setIp, isLoading, isReady }) => {
         disabled={!isReady || isLoading}
         type="submit"
       >
-        button
+        {isLoading ? "загрузка" : "проверить"}
       </button>
     </form>
   );
