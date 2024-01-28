@@ -7,7 +7,7 @@
   align-items: flex-start;
   justify-content: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding: min(2rem, 10vw);
   }
 
@@ -15,7 +15,7 @@
     width: calc(50% - 1rem);
     margin: 0 0.5rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       width: 100%;
       margin: 1rem 0;
     }

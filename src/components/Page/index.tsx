@@ -7,13 +7,13 @@ import InfoElement from "../InfoElement";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
-  const { info, isLoading } = useIpInfo(ip);
+  const { info, isLoading, isReady } = useIpInfo(ip);
 
   return (
     <div className={styles.page}>
       <div className={styles.content}>
         <div className={styles.form}>
-          <Form ip={ip} setIp={setIp} isLoading={isLoading} />
+          <Form ip={ip} setIp={setIp} isLoading={isLoading} isReady={isReady} />
         </div>
 
         <div className={styles.info}>

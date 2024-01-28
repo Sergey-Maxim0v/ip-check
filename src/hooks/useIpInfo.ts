@@ -6,6 +6,7 @@ import { getIpApiCom } from "../api/getIpApiCom.ts";
 import { getIpApiCo } from "../api/getIpApiCo.ts";
 
 export const useIpInfo = (ip?: string) => {
+  console.log(ip);
   const [info, setInfo] = useState<IInfo>(DEFAULT_INFO);
   const [isLoadingIpApiCo, setIsLoadingIpApiCo] = useState(false);
   const [isLoadingIpApiCom, setIsLoadingIpApiCom] = useState(false);
