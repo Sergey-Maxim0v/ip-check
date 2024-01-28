@@ -39,7 +39,6 @@ export const infoSetter = ({
         ...prev[key],
         value: data[dataKey],
         source: source,
-        description: prev[key].description,
         [source]: data[dataKey],
       };
     };

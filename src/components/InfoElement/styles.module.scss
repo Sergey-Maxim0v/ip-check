@@ -1,0 +1,30 @@
+.element {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  overflow: hidden;
+  border-bottom: 1px solid currentColor;
+  line-height: 1.2rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.title {
+  width: 10rem;
+  max-width: 100%;
+  min-width: 10rem;
+  opacity: 0.85;
+}
+
+.value {
+  min-width: 10rem;
+  max-width: calc(100% - 11rem);
+  height: auto;
+  margin-left: 1rem;
+  overflow-wrap: break-word;
+}

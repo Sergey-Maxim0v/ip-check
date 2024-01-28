@@ -3,9 +3,9 @@ import { IForm } from "./types.ts";
 
 import styles from "./styles.module.scss";
 
-const Form: FC<IForm> = ({ ip, setIp, disabled }) => {
+const Form: FC<IForm> = ({ ip, setIp, isLoading }) => {
   // TODO:
-  console.log(ip, !!setIp, disabled);
+  console.log(ip, !!setIp, isLoading);
 
   return <div className={styles.form}>TODO: form </div>;
 };

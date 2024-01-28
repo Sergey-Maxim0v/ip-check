@@ -3,32 +3,22 @@ import { useState } from "react";
 
 import styles from "./styles.module.scss";
 import Form from "../Form";
+import InfoElement from "../InfoElement";
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
   const { info, isLoading } = useIpInfo(ip);
 
-  // TODO:
-  console.log(info);
-
   return (
     <div className={styles.page}>
       <div className={styles.content}>
         <div className={styles.form}>
-          <Form ip={ip} setIp={setIp} disabled={isLoading} />
-        </div>
-
-        <div className={styles.loaders}>
-          TODO: loaders
-          <p>is loading: {`${isLoading}`}</p>
+          <Form ip={ip} setIp={setIp} isLoading={isLoading} />
         </div>
 
         <div className={styles.info}>
-          TODO: <br /> <br />
-          {Object.entries(info).map((el) => (
-            <p key={el[0]} style={{ marginBottom: "0.5rem" }}>
-              {`${el[0]}: ${el[1].value} (${el[1].source})`}
-            </p>
+          {Object.values(info).map((el) => (
+            <InfoElement key={el.name} el={el} />
           ))}
         </div>
       </div>
