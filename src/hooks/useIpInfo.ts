@@ -21,29 +21,29 @@ export const useIpInfo = (ip?: string) => {
     setIsLoadingIpApiCom(true);
     setIsLoadingIpApiCo(true);
 
-    getIpApiCom(ip)
-      .then((data) => {
-        if (data?.status === "success") {
-          infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapicom });
-        }
-      })
-      .catch(() => setIsError(true))
-      .finally(() => {
-        setIsLoadingIpApiCom(false);
-      });
-
     if (isLocalHost) {
-      getIpApiCo(ip)
+      getIpApiCom(ip)
         .then((data) => {
-          if (data && data.ip) {
-            infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapico });
+          if (data?.status === "success") {
+            infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapicom });
           }
         })
         .catch(() => setIsError(true))
         .finally(() => {
-          setIsLoadingIpApiCo(false);
+          setIsLoadingIpApiCom(false);
         });
     }
+
+    getIpApiCo(ip)
+      .then((data) => {
+        if (data && data.ip) {
+          infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapico });
+        }
+      })
+      .catch(() => setIsError(true))
+      .finally(() => {
+        setIsLoadingIpApiCo(false);
+      });
   }, [ip]);
 
   return { info, isLoading, isError };
