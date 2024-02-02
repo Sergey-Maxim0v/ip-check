@@ -14,6 +14,8 @@ export const useIpInfo = (ip?: string) => {
   const isLoading = isLoadingIpApiCo && isLoadingIpApiCom;
 
   useEffect(() => {
+    const isLocalHost = window.location.hostname.includes("localhost");
+
     setInfo(() => DEFAULT_INFO);
 
     setIsLoadingIpApiCom(true);
@@ -30,16 +32,18 @@ export const useIpInfo = (ip?: string) => {
         setIsLoadingIpApiCom(false);
       });
 
-    getIpApiCo(ip)
-      .then((data) => {
-        if (data && data.ip) {
-          infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapico });
-        }
-      })
-      .catch(() => setIsError(true))
-      .finally(() => {
-        setIsLoadingIpApiCo(false);
-      });
+    if (isLocalHost) {
+      getIpApiCo(ip)
+        .then((data) => {
+          if (data && data.ip) {
+            infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapico });
+          }
+        })
+        .catch(() => setIsError(true))
+        .finally(() => {
+          setIsLoadingIpApiCo(false);
+        });
+    }
   }, [ip]);
 
   return { info, isLoading, isError };
