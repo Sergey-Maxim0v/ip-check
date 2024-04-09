@@ -26,9 +26,14 @@ export const useIpInfo = (ip?: string) => {
         .then((data) => {
           if (data?.status === "success") {
             infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapicom });
+            setIsError(false);
           }
         })
-        .catch(() => setIsError(true))
+        .catch(() => {
+          if (!info.ip.value) {
+            setIsError(true);
+          }
+        })
         .finally(() => {
           setIsLoadingIpApiCom(false);
         });
@@ -40,7 +45,11 @@ export const useIpInfo = (ip?: string) => {
           infoSetter({ data, setInfo, source: SOURCE_ENUM.ipapico });
         }
       })
-      .catch(() => setIsError(true))
+      .catch(() => {
+        if (!info.ip.value) {
+          setIsError(true);
+        }
+      })
       .finally(() => {
         setIsLoadingIpApiCo(false);
       });

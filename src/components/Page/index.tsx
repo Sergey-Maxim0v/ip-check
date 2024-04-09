@@ -10,7 +10,7 @@ const InfoMap = lazy(() => import("../InfoMap"));
 
 const Page = () => {
   const [ip, setIp] = useState<string>();
-  const { info, isLoading } = useIpInfo(ip);
+  const { info, isLoading, isError } = useIpInfo(ip);
 
   useEffect(() => {
     if (!isLoading && info.ip.value) {
@@ -33,7 +33,7 @@ const Page = () => {
     <div className={styles.page}>
       <div className={styles.content}>
         <div className={styles.form}>
-          <Form ip={ip} setIp={setIp} isLoading={isLoading} />
+          <Form ip={ip} setIp={setIp} isLoading={isLoading} isError={isError} />
         </div>
 
         <div className={styles.info}>
